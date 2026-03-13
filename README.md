@@ -1,92 +1,161 @@
-# WEB-_Tech
-🚀 EventEase – Quick Project Guide
+🚀 EventEase – Web Technology Project
 
-EventEase is a Flask + MongoDB Event Management System where users can browse events, register for free or paid events, and admins can manage events.
+EventEase is a Flask + MongoDB based Event Management System that allows users to browse events, register for free or paid events, and administrators to manage events efficiently.
 
-📊 ERD Diagram (Visual):<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/6734a19a-95dc-49c1-bbeb-6ace4c82b98b" />
+🎯 Project Overview
 
+EventEase provides a simple platform where:
+
+Visitors can browse available events
+
+Users can register and join events
+
+Admins can create, update, and delete events
+
+Paid events are processed using Stripe payments
 
 👥 User Roles
 Role	Features
-👤 Guest	View events, browse site, contact
-👥 User	Register/login, dashboard, join events, pay for paid events
-👑 Admin	Create events, edit events, delete events, view all users
+👤 Guest	View events, browse website, contact page
+👥 User	Register, login, access dashboard, join events, pay for paid events
+👑 Admin	Create events, edit events, delete events, view users and registrations
 📁 Project Structure
 EventEase/
 │
-├── app.py
-├── requirements.txt
-└── README.md
-# 1. Install
+├── app.py              # Main Flask Application
+├── requirements.txt    # Python Dependencies
+└── README.md           # Project Documentation
+⚙️ Installation Guide
+1️⃣ Install Required Libraries
 pip install flask pymongo bcrypt flask-cors stripe
+2️⃣ Start MongoDB Server
+mongod
 
-# 2. Start MongoDB
-mongod  # or sudo service mongod start
+Linux users can run:
 
-# 3. Run
+sudo service mongod start
+3️⃣ Run the Application
 python app.py
-# Open: http://localhost:5000
+
+Open your browser and visit:
+
+http://localhost:5000
 🌐 Main Routes
-text
-GET  /              Home page
-GET  /events        All events
-GET  /login         Login form
-POST /login         Login submit
-GET  /register      Register form
-POST /register      Register submit
-GET  /dashboard     User dashboard
-GET  /event/<id>    Event details
-GET  /register_event/<id>  Free register
-GET  /admin         Admin panel
-GET  /contact       Contact page
+Method	Route	Description
+GET	/	Home Page
+GET	/events	View all events
+GET	/login	Login form
+POST	/login	Login submission
+GET	/register	Registration form
+POST	/register	Registration submission
+GET	/dashboard	User dashboard
+GET	/event/<id>	Event details
+GET	/register_event/<id>	Register for free event
+GET	/admin	Admin panel
+GET	/contact	Contact page
 💾 Database Collections
-javascript
-// Just 4 collections:
-1. Users      // user accounts
-2. Events     // event details
-3. EventRegistrations  // who registered
-4. Payments   // payment records
+
+The system uses MongoDB with 4 collections:
+
+Users
+Events
+EventRegistrations
+Payments
+Example MongoDB Structure
+Users
+{
+  name: "Maira",
+  email: "maira@test.com",
+  password: "hashed_password",
+  role: "user"
+}
 🔑 Default Test Accounts
-text
-Regular: user@test.com / password123
-Admin:   admin@test.com / admin123
-Stripe:  4242 4242 4242 4242 (test card)
-🎨 Quick Color Reference
-text
-Primary:   #4361ee  (Blue)
-Success:   #4cc9f0  (Light Blue)
-Danger:    #f72585  (Pink)
-Gradient:  Blue → Purple
-📝 Common Commands
-bash
-# MongoDB queries
+User Account
+Email: user@test.com
+Password: password123
+Admin Account
+Email: admin@test.com
+Password: admin123
+
+Stripe Test Card
+
+4242 4242 4242 4242
+🎨 UI Color Theme
+Type	Color
+Primary	#4361ee
+Success	#4cc9f0
+Danger	#f72585
+Gradient	Blue → Purple
+📝 Useful MongoDB Commands
+
+Check all users:
+
 db.Users.find()
+
+Find paid events:
+
 db.Events.find({price: {$gt: 0}})
+
+Find registrations of a user:
+
 db.EventRegistrations.find({user_email: "user@test.com"})
+🚨 Common Error Fixes
+MongoDB Connection Error
 
-# Check if running
-ps aux | grep mongo  # Linux/Mac
-tasklist | findstr mongo  # Windows
-🚨 Error Fixes
-text
-❌ MongoDB not connecting:
-   → Run: mongod
-   → Check: mongodb://localhost:27017/
+Run MongoDB server:
 
-❌ Flask not running:
-   → Check port 5000 is free
-   → Kill process: fuser -k 5000/tcp
+mongod
 
-❌ Stripe errors:
-   → Use test keys only
-   → Card: 4242 4242 4242 4242
+Check connection:
+
+mongodb://localhost:27017/
+Flask Not Running
+
+Make sure port 5000 is free.
+
+Linux:
+
+fuser -k 5000/tcp
+
+Windows:
+
+taskkill /F /IM python.exe
+Stripe Payment Errors
+
+Use Stripe test keys only
+
+Test Card:
+
+4242 4242 4242 4242
 ⚡ Quick Tips
-First login? Register as admin to create events
 
-Testing payments? Use Stripe test card
+✔ Register as Admin first to create events
+✔ Use Stripe test card for payments
+✔ If login fails → clear cookies and login again
+✔ If events are not showing → check MongoDB server
 
-Lost session? Clear cookies and login again
+🎉 Project Summary
 
-Events not showing? Check MongoDB is running
+Backend: Flask (Python)
 
-That's it! Just 4 collections, 1 main file, and 3 steps to run! 🎉
+Database: MongoDB
+
+Payment: Stripe
+
+Collections: 4
+
+Main File: app.py
+
+Simple architecture with 1 backend file and MongoDB database makes the project easy to run and maintain.
+
+If you want, I can also make:
+
+⭐ Professional GitHub README with badges
+
+📊 ER Diagram for your report
+
+🧾 15-page Web Technology project report
+
+🎨 System Architecture Diagram
+
+for your EventEase project submission.
