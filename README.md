@@ -1,70 +1,22 @@
 # WEB-_Tech
-EventEase - Quick Shortcut Guide 🚀
-📊 Simple ERD Diagram
-text
-┌─────────┐          ┌─────────┐
-│  USERS  │          │ EVENTS  │
-├─────────┤          ├─────────┤
-│PK id    │◄────────►│PK id    │
-│  name   │     ▲    │  title  │
-│  email  │     │    │  date   │
-│  password│     │    │  price  │
-│  role   │     │    │  image  │
-└─────────┘     │    └─────────┘
-                │          ▲
-                │          │
-           ┌────┴──────────┴────┐
-           │   REGISTRATIONS     │
-           ├─────────────────────┤
-           │PK id                │
-           │FK user_email        │
-           │FK event_id          │
-           │  paid (true/false)  │
-           │  reg_date           │
-           └─────────────────────┘
-                │          ▲
-                │          │
-           ┌────┴──────────┴────┐
-           │     PAYMENTS        │
-           ├─────────────────────┤
-           │PK id                │
-           │FK user_email        │
-           │FK event_id          │
-           │  amount             │
-           │  status             │
-           └─────────────────────┘
+🚀 EventEase – Quick Project Guide
 
-Legend: PK = Primary Key, FK = Foreign Key
-🎯 Quick System Flow
-text
-VISITOR ──► [Home/Events] ──► Register/Login ──► DASHBOARD
-                              │
-                   ┌──────────┴──────────┐
-                   ▼                     ▼
-              FREE EVENT             PAID EVENT
-                   ▼                     ▼
-            Register Now        Stripe Payment
-                   ▼                     ▼
-              CONFIRMATION ◄───────── SUCCESS
-🔄 User Types & Actions
-text
-👤 GUEST          👥 USER          👑 ADMIN
-─────────        ─────────        ─────────
-• View           • Same as        • Same as User
-• Browse         Guest +          • Create Events
-• Contact        • Dashboard      • Edit Events
-                 • Register       • Delete Events
-                 • Pay Events     • View All Data
-                 • My Events
-📁 Core Files
-text
+EventEase is a Flask + MongoDB Event Management System where users can browse events, register for free or paid events, and admins can manage events.
+
+📊 ERD Diagram (Visual):<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/6734a19a-95dc-49c1-bbeb-6ace4c82b98b" />
+
+
+👥 User Roles
+Role	Features
+👤 Guest	View events, browse site, contact
+👥 User	Register/login, dashboard, join events, pay for paid events
+👑 Admin	Create events, edit events, delete events, view all users
+📁 Project Structure
 EventEase/
 │
-├── app.py              # Main application (ALL code in one file!)
-├── README.md           # Documentation
-└── requirements.txt    # Dependencies
-🔧 Quick Setup (3 Steps)
-bash
+├── app.py
+├── requirements.txt
+└── README.md
 # 1. Install
 pip install flask pymongo bcrypt flask-cors stripe
 
